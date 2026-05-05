@@ -13,7 +13,7 @@ Computer Vision and Pattern Recognition Conference (CVPR), 2023
 
 ## Quick Inference on Google Colab
 
-> **No local setup required.** Run OVSeg inference directly in your browser using Google Colab.
+> **No local setup required.** Run OVSeg inference directly in browser using Google Colab.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jaehoshin123/OVSeg/blob/main/OVSeg_colab_inference.ipynb)
 
