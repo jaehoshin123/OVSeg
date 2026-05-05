@@ -3,9 +3,6 @@
 > **This repository is forked from [facebookresearch/ov-seg](https://github.com/facebookresearch/ov-seg) for the Smart Factory Capstone Design course.**
 > Forked and maintained by **신재호 (Jaeho Shin)**.
 
-<img src="resources/pytorch-logo-dark.png" width="10%">
-
-This is the official PyTorch implementation of our paper: <br>
 **Open-Vocabulary Semantic Segmentation with Mask-adapted CLIP**<br>
 [Feng Liang](https://jeff-liangf.github.io/), [Bichen Wu](https://www.linkedin.com/in/bichenwu), [Xiaoliang Dai](https://sites.google.com/view/xiaoliangdai/), [Kunpeng Li](https://kunpengli1994.github.io/), [Yinan Zhao](https://yinan-zhao.github.io/), [Hang Zhang](https://hangzhang.org/), [Peizhao Zhang](https://www.linkedin.com/in/peizhao-zhang-14846042/), [Peter Vajda](https://sites.google.com/site/vajdap), [Diana Marculescu](https://www.ece.utexas.edu/people/faculty/diana-marculescu) <br>
 Computer Vision and Pattern Recognition Conference (CVPR), 2023
@@ -18,7 +15,7 @@ Computer Vision and Pattern Recognition Conference (CVPR), 2023
 
 ---
 
-## 🚀 Quick Inference on Google Colab
+## Quick Inference on Google Colab
 
 > **No local setup required.** Run OVSeg inference directly in your browser using Google Colab.
 
@@ -35,7 +32,7 @@ Computer Vision and Pattern Recognition Conference (CVPR), 2023
 | **5. Inference** | Runs `demo.py` with user-specified class names on a sample image |
 | **6. Visualization** | Displays the original image alongside the OVSeg segmentation prediction |
 
-**Requirements:** Google Colab with GPU runtime (Tesla T4 or better recommended)
+**Requirements:** Google Colab with GPU runtime (T4 GPU or better recommended)
 
 ---
 
