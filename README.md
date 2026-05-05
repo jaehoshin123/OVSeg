@@ -1,6 +1,6 @@
 # [OVSeg] Open-Vocabulary Semantic Segmentation with Mask-adapted CLIP
 
-> **This repository is forked from [facebookresearch/ov-seg](https://github.com/facebookresearch/ov-seg) for the Smart Factory Capstone Design course.**
+> **This repository is forked from [facebookresearch/ov-seg](https://github.com/facebookresearch/ov-seg) for the **Smart Factory Capstone Design** course.**
 > Forked and maintained by **신재호 (Jaeho Shin)**.
 
 **Open-Vocabulary Semantic Segmentation with Mask-adapted CLIP**<br>
