@@ -1,3 +1,31 @@
 open_clip_training/openclip_data/*
 open_clip_training/src/logs/*
 *__pycache__*
+
+# Checkpoints & large model files
+checkpoints/
+*.pth
+*.pkl
+*.bin
+*.ckpt
+
+# Datasets
+datasets/
+
+# Prediction outputs
+pred/
+
+# Python
+*.pyc
+*.pyo
+.eggs/
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
