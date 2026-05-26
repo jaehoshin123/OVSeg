@@ -24,7 +24,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - 9단계 셀 구성을 제안: GPU 확인 → Miniconda 설치 → `ovseg` 환경 생성 → Repo clone & CLIP 설치 → 호환성 패치 → checkpoint 다운로드 → toy example 다운로드/메타데이터 작성 → 일괄 inference → 사용자 이미지 inference.
 - 각 단계마다 셀이 단독으로 재실행 가능하도록 만들 것을 권고.
 
-**산출물 반영:** `OVSeg.ipynb` 최상단 markdown 셀(Cell 0)의 9 단계 목차가 이 응답에 기반합니다.
 
 ---
 
@@ -45,7 +44,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - `wget -q` 로 silent 다운로드, `bash ... -b -p` 로 비대화형 설치.
 - 설치 후 `conda --version` 으로 sanity check.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 4 그대로.
 
 ---
 
@@ -66,7 +64,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - `setuptools==59.5.0` 을 명시적으로 pin 해 detectron2 빌드 시 distutils 관련 에러 회피.
 - 마지막에 버전 출력 블록을 추가해 `torch.cuda.is_available()` 까지 확인.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 6 (가장 복잡한 셀). 이 셀 하나로 Colab T4 런타임에서 약 8~10분 안에 환경이 준비됩니다.
 
 ---
 
@@ -80,7 +77,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - 더불어 detectron2 도 NumPy 2.x 와 ABI 가 달라 import 자체가 실패함.
 - 따라서 1.23.5 가 detectron2/torch/OVSeg 세 가지 모두를 만족하는 마지막 안전 버전.
 
-**산출물 반영:** 본 보고서 §5.2, 발표 자료 "Environment Pinning Rationale" 슬라이드.
 
 ---
 
@@ -99,7 +95,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - `if [ ! -d ov-seg ]` 가드.
 - `pip install -Ue .` (editable + upgrade) 로 modified CLIP 설치.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 8 의 첫 부분.
 
 ---
 
@@ -119,7 +114,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - `s.replace("np.int6464", "np.int64")` 를 먼저 적용 (정규식이 잘못 잡지 않도록 순서 보장).
 - `predictor.read_text().splitlines()` 로 line-by-line print 추가하여 어떤 줄이 남았는지 검증.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 8 의 첫 번째 patch 블록. 이 패치 한 번으로 OVSeg 본체 코드를 fork 하지 않고도 numpy 1.23.5 환경에서 깨끗하게 동작합니다.
 
 ---
 
@@ -137,7 +131,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - `try/except` 로 detectron2 가 없는 환경도 안전하게 통과.
 - 이미 패치된 경우(`"Image.LINEAR" not in s`)에는 "already OK" 출력.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 8 의 두 번째 patch 블록.
 
 ---
 
@@ -155,7 +148,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - `target.exists()` 가드로 idempotency 보장.
 - 최종적으로 `ls -lh checkpoints/` 로 파일 크기 확인.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 10. Colab에서 평균 30~60초 안에 체크포인트 확보.
 
 ---
 
@@ -176,7 +168,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - `sorted({ex["image"] for ex in toy_examples})` 로 중복 없는 이미지 다운로드.
 - `Path("toy_examples.json").write_text(json.dumps(...))` 로 직렬화.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 12. 메타데이터 분리 덕분에 inference 셀(16)을 수정할 필요 없이 example만 늘리면 자동으로 일괄 처리됩니다.
 
 ---
 
@@ -192,7 +183,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - `subprocess.run(cmd, cwd=str(repo), check=True)` 로 demo.py 호출.
 - 일괄 처리 후 `find pred_toy_examples -maxdepth 2 -type f` 로 산출물 목록 확인.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 16.
 
 ---
 
@@ -207,7 +197,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - 원본 이미지가 없거나 prediction 이 없으면 "missing:" 으로 출력하고 skip.
 - title 은 multi-line f-string 으로 example_id + proposal_gen_original + class_names 표기.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 18.
 
 ---
 
@@ -222,7 +211,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - assertion (`CUSTOM_IMAGE_PATH.exists()`, `ckpt.exists()`) 으로 fail-fast.
 - 출력 폴더 `pred_custom/` 분리.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 20, 21.
 
 ---
 
@@ -236,52 +224,15 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 - `## 트러블슈팅 > CUDA OOM` 섹션 추가.
 - 짧은 prompt example 부터 검증 권장.
 
-**산출물 반영:** `OVSeg.ipynb` Cell 22.
 
 ---
 
-### Prompt 8.2 — 발표 자료용 핵심 인사이트 요약
 
-> 발표 영상(`OVSeg.mp4`)에서 5분 안에 설명해야 합니다. OVSeg 가 기존 two-stage open-vocabulary segmentation 모델 대비 어떤 점이 본질적으로 다른지, 한 슬라이드에 들어갈 만한 핵심 문장 3개로 정리해 주세요.
-
-**Claude Code 응답 요약**
-1. **Bottleneck 진단:** Pre-trained CLIP은 mask-cropped image에 대해 분류 성능이 급락한다 (oracle classifier 가정 시 66.5% mIoU → 실제 CLIP 사용 시 20.1% mIoU on ADE20K-150). 두 단계 모델의 성능 한계는 mask generator 가 아니라 CLIP 의 domain gap 이다.
-2. **Mask-adapted CLIP:** CLIP 을 segmentation label (closed set) 로 finetune 하면 generalization 이 죽는다. 대신 image-caption (COCO Captions) 에서 noun 을 뽑아 자동 labeling 한 noisy-but-diverse mask-category pair (1.3M, 27K unique nouns) 로 finetune 하면 open-vocabulary 능력이 보존된다.
-3. **Mask Prompt Tuning (MPT):** Masked image 의 "blank token" 을 학습 가능한 prompt 로 치환하는 visual prompt tuning 변형. CLIP weight 를 건드리지 않고도 단독으로 +4.7% mIoU on ADE-150 향상, full finetuning 위에 추가로 적용 시 +0.8% 추가 향상. CLIP 을 multi-task 환경에서 공유할 때 핵심.
-
-**산출물 반영:** `OVSeg.pptx` 의 "핵심 기여 3줄 요약" 슬라이드.
-
----
-
-## 9. 회고 — Claude Code 사용 평가
-
-### Prompt 9.1 — 작업 후 자체 평가
-
-> 이번 작업에서 Claude Code 가 특히 도움이 된 지점과, 사람 손이 반드시 필요했던 지점을 구분해서 정리해 주세요. 보고서 마지막에 들어갑니다.
-
-**Claude Code 응답 요약**
-
-*도움이 컸던 지점*
-- **환경 pin 추적 :** PyTorch 1.10.1 + CUDA 11.3 + numpy 1.23.5 + Pillow 9.5.0 + setuptools 59.5.0 의 조합을 단번에 제시. 사람이 검색으로 찾으면 최소 30분~1시간의 시행착오가 필요한 부분.
-- **호환성 패치 자동화:** `np.int` deprecation 과 `Image.LINEAR` removal 을 알고 있어 정규식 기반 in-place patch 를 한 번에 제안. 본 코드를 fork 하지 않고도 유지보수 가능한 형태로 만들어 줌.
-- **idempotency 설계:** `if not exists` 가드를 모든 셀에 일관되게 삽입. Colab 세션이 중간에 끊겨도 처음부터 다시 돌릴 필요가 없도록 만들어 준 것이 가장 큰 시간 절약.
-- **에러 메시지 해석:** `np.int6464` 같은 비전형적인 오타도 패턴 인식으로 단번에 짚어냄.
-
-*사람이 반드시 개입해야 했던 지점*
-- **체크포인트 출처 선택:** gdown vs HF Hub 어디서 받을지의 정책 결정은 결국 사용자가 했음. 두 옵션 다 제시했지만 "어느 쪽이 실패할 확률이 낮은가" 는 직접 시도한 사람만 안다.
-- **실제 Colab T4 에서의 OOM 측정:** 모델 메모리 footprint 는 사람이 직접 돌려보고 9개 prompt 가 OOM 한계인 것을 확인해야 했음.
-- **논문 내용 검증:** OVSeg의 핵심 기여 3가지를 추리는 작업은 Claude Code가 잘 요약했지만, 그 요약이 정확한지(특히 +4.7% / +0.8% 같은 수치가 어느 표에서 왔는지)는 사람이 논문 §4.3.2, Table 3 을 직접 대조해 검증했음.
-- **발표 흐름 설계:** 5분 발표에서 청자가 따라올 수 있는 순서로 슬라이드를 재배치하는 것은 도구가 대체하기 어려움.
-
----
-
-## 10. 메타 — 본 PROMPTS.md 자체의 생성
+## 본 PROMPTS.md 생성
 
 ### Prompt 10.1 — 로그 정리
 
 > 위에서 진행한 모든 프롬프트와 응답 요약을 단계별로 정리해서 PROMPTS.md 한 파일로 만들어 주세요. 표지에 학번/이름/타겟논문/도구/저장소를 넣고, 각 단계는 "Prompt N.M" 형식으로 번호를 매겨서 사람이 어느 단계에서 어떤 의사결정이 일어났는지 추적할 수 있게.
-
-**산출물 반영:** 본 파일.
 
 ---
 
