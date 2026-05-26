@@ -230,52 +230,6 @@
 ## 본 PROMPTS.md 생성
 
 
-> 위에서 진행한 모든 프롬프트와 응답 요약을 단계별로 정리해서 PROMPTS.md 한 파일로 만들어 주세요. 표지에 학번/이름/타겟논문/도구/저장소를 넣고, 각 단계는 "Prompt N.M" 형식으로 번호를 매겨서 사람이 어느 단계에서 어떤 의사결정이 일어났는지 추적할 수 있게.
+> 위에서 진행한 모든 프롬프트와 응답 요약을 단계별로 정리해서 PROMPTS.md 한 파일로 만들어 주세요.각 단계는 "Prompt N.M" 형식으로 번호를 매겨서 사람이 어느 단계에서 어떤 의사결정이 일어났는지 추적할 수 있도록 해줘.
 
----
 
-## Appendix A. 노트북 셀 인덱스 ↔ 프롬프트 매핑
-
-| Cell | 종류 | 내용 | 근거 프롬프트 |
-|------|------|------|---------------|
-| 0 | md | 노트북 개요 / 9 단계 목차 | 1.1 |
-| 1 | md | GPU 확인 안내 | 1.1 |
-| 2 | code | `!nvidia-smi` | 1.1 |
-| 3 | md | Miniconda 설치 섹션 | 2.1 |
-| 4 | code | Miniconda 설치 (idempotent) | 2.1 |
-| 5 | md | `ovseg` env 섹션 | 2.2 |
-| 6 | code | conda env 생성 + PyTorch/Detectron2/OVSeg deps | 2.2, 2.3 |
-| 7 | md | Repo clone / CLIP 설치 / 호환성 패치 섹션 | 1.1, 3.1, 3.2, 3.3 |
-| 8 | code | git clone + CLIP editable install + np.int 패치 + Image.LINEAR 패치 | 3.1, 3.2, 3.3 |
-| 9 | md | Checkpoint 섹션 | 4.1 |
-| 10 | code | HF Hub 에서 checkpoint 다운로드 | 4.1 |
-| 11 | md | Toy examples 섹션 | 5.1 |
-| 12 | code | 5개 example 메타데이터 + 이미지 다운로드 | 5.1 |
-| 13 | md | 원본 시각화 섹션 | 6.1 |
-| 14 | code | sample 이미지 5장 시각화 | 6.1 |
-| 15 | md | 일괄 inference 섹션 | 5.2 |
-| 16 | code | example 별 폴더 분리하여 일괄 inference | 5.2 |
-| 17 | md | 결과 시각화 섹션 | 6.1 |
-| 18 | code | (원본, OVSeg 예측) 페어 시각화 | 6.1 |
-| 19 | md | Custom inference 사용법 | 7.1 |
-| 20 | code | Custom 이미지 inference | 7.1 |
-| 21 | code | Custom 이미지 결과 시각화 | 7.1 |
-| 22 | md | 트러블슈팅 (CUDA OOM) | 8.1 |
-| 23 | code | (예약, 추가 실험용) | — |
-
----
-
-## Appendix B. 사용 도구 환경
-
-| 항목 | 값 |
-|------|-----|
-| AI 코딩 툴 | Claude Code |
-| 모델 | claude-sonnet-4-5 |
-| 작업 환경 | Google Colab (Tesla T4, 15GB VRAM) |
-| 호스트 Python | 3.10 (Colab 기본값) |
-| Conda env Python | 3.8 (`ovseg`) |
-| 핵심 의존성 | PyTorch 1.10.1+cu113, torchvision 0.11.2+cu113, detectron2 (FB wheel), numpy 1.23.5, Pillow 9.5.0, setuptools 59.5.0 |
-| 체크포인트 | `ovseg_swinbase_vitL14_ft_mpt.pth` (~1.3GB, Swin-B + ViT-L/14, FT+MPT) |
-| Public 산출물 | https://github.com/jaehoshin123/OVSeg |
-
-— *문서 끝*
