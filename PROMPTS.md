@@ -19,8 +19,6 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 > 3. 공식 README가 명시한 PyTorch/Detectron2 버전을 그대로 사용할 것
 > 4. 공식 Hugging Face Space `facebook/ov-seg` 에 올라가 있는 toy example 5개(`sample_01.jpeg` ~ `sample_05.png`)를 자동 다운로드하여 일괄 inference 할 것
 > 5. 결과는 example ID 별로 별도 폴더에 저장하여 같은 이미지에 prompt set이 여러 개일 때 덮어쓰기가 발생하지 않도록 할 것
->
-> 우선 전체 노트북의 셀 구성을 9 단계 정도로 제안해 주세요.
 
 **Claude Code 응답 요약**
 - 9단계 셀 구성을 제안: GPU 확인 → Miniconda 설치 → `ovseg` 환경 생성 → Repo clone & CLIP 설치 → 호환성 패치 → checkpoint 다운로드 → toy example 다운로드/메타데이터 작성 → 일괄 inference → 사용자 이미지 inference.
