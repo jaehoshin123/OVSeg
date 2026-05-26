@@ -1,22 +1,12 @@
 # PROMPTS.md — Claude Code Prompt Log
 
-**과제명:** 스마트팩토리캡스톤디자인(SFC4001) — AI 코딩 툴 활용 논문 구현 과제
-**학번/이름:** 2022315911 / 신재호 (Jaeho Shin)
-**타겟 논문:** *Open-Vocabulary Semantic Segmentation with Mask-adapted CLIP* (Liang et al., CVPR 2023, arXiv:2210.04150)
-**사용 AI 코딩 툴:** Claude Code (Anthropic, claude-sonnet-4-5)
-**GitHub 저장소:** https://github.com/jaehoshin123/OVSeg
-**작업 기간:** 2026년 5월
-**최종 산출물:** Google Colab inference notebook (`OVSeg.ipynb`), 발표 자료(`OVSeg.pptx`), 발표 영상(`OVSeg.mp4`)
-
----
-
 ## 0. 사전 메모
 
 본 로그는 Claude Code를 사용하여 `facebookresearch/ov-seg` 공식 저장소를 Google Colab 환경에서 학습 없이 추론만 수행하도록 만드는 과정에서 주고받은 프롬프트와, 각 프롬프트가 산출물(`OVSeg.ipynb`)에 어떻게 반영되었는지를 단계별로 기록한 것입니다.
 
 문법, 띄어쓰기, 사소한 후속 확인성 메시지(`OK`, `진행해줘`)는 가독성을 위해 일부 합치거나 다듬어 정리하였으며, 실제 Claude Code 세션의 대화 흐름은 본 로그가 정리한 순서와 동일합니다.
 
-OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 의존성 환경이 사실상 동결되어 있어, 2026년 시점의 Google Colab(기본 Python 3.10/3.11, Pillow 10.x, NumPy 2.x)에서는 그대로 실행되지 않습니다. 본 작업의 핵심은 "원본 코드를 수정하지 않고도 최신 Colab 환경에서 동작하게 만드는 호환 계층"을 Claude Code와 함께 설계하는 데 있었습니다.
+OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 의존성 환경이 사실상 동결되어 있어, 2026년 시점의 Google Colab(기본 Python 3.10/3.11, Pillow 10.x, NumPy 2.x)에서는 그대로 실행되지 않습니다. 본 작업의 핵심은 원본 코드를 수정하지 않고도 최신 Colab 환경에서 동작하게 만드는 호환 계층을 Claude Code와 함께 설계하는 데 있었습니다.
 
 ---
 
@@ -24,7 +14,7 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 
 ### Prompt 1.1 — 초기 요구사항 정의
 
-> OVSeg 논문(arXiv:2210.04150, CVPR 2023)의 공식 구현(`facebookresearch/ov-seg`)을 Google Colab에서 inference만 실행하는 Jupyter notebook을 만들고 싶습니다. 학습은 하지 않습니다. 다음 조건을 만족해야 합니다.
+> OVSeg 논문(arXiv:2210.04150, CVPR 2023)의 공식 구현(`facebookresearch/ov-seg`)을 Google Colab에서 inference만 실행하는 Jupyter notebook을 만들자. 다음 조건을 만족.
 >
 > 1. Colab 런타임이 GPU로 설정되어 있는지 먼저 검증할 것
 > 2. `ovseg` 라는 이름의 conda 환경을 만들고 그 안에서 모든 작업을 수행할 것
@@ -36,7 +26,7 @@ OVSeg 공식 저장소는 2022년 말에 마지막으로 업데이트된 이후 
 
 **Claude Code 응답 요약**
 - 9단계 셀 구성을 제안: GPU 확인 → Miniconda 설치 → `ovseg` 환경 생성 → Repo clone & CLIP 설치 → 호환성 패치 → checkpoint 다운로드 → toy example 다운로드/메타데이터 작성 → 일괄 inference → 사용자 이미지 inference.
-- 각 단계마다 셀이 단독으로 재실행 가능하도록(idempotent) 만들 것을 권고.
+- 각 단계마다 셀이 단독으로 재실행 가능하도록 만들 것을 권고.
 
 **산출물 반영:** `OVSeg.ipynb` 최상단 markdown 셀(Cell 0)의 9 단계 목차가 이 응답에 기반합니다.
 
