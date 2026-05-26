@@ -1,8 +1,6 @@
 # PROMPTS.md — Claude Code Prompt Log
 
-## 0. 사전 메모
-
-본 로그는 Claude Code를 사용하여 `facebookresearch/ov-seg` 공식 저장소를 Google Colab 환경에서 학습 없이 추론만 수행하도록 만드는 과정에서 주고받은 프롬프트와, 각 프롬프트가 산출물(`OVSeg.ipynb`)에 어떻게 반영되었는지를 단계별로 기록한 것입니다.
+본 파일은 Claude Code를 사용하여 `facebookresearch/ov-seg` 공식 저장소를 Google Colab 환경에서 학습 없이 추론만 수행하도록 만드는 과정에서 주고받은 프롬프트와, 각 프롬프트가 산출물(`OVSeg.ipynb`)에 어떻게 반영되었는지를 단계별로 기록한 것입니다.
 
 문법, 띄어쓰기, 사소한 후속 확인성 메시지(`OK`, `진행해줘`)는 가독성을 위해 일부 합치거나 다듬어 정리하였으며, 실제 Claude Code 세션의 대화 흐름은 본 로그가 정리한 순서와 동일합니다.
 
